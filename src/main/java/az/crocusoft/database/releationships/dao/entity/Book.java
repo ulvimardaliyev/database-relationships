@@ -1,6 +1,7 @@
 package az.crocusoft.database.releationships.dao.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -15,4 +16,7 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "library_id")
     private Library library;
+
+    @ManyToMany(mappedBy = "books")
+    private List<Author> authors;
 }
