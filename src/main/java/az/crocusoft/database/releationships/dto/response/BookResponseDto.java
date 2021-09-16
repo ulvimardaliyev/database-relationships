@@ -1,31 +1,25 @@
-package az.crocusoft.database.releationships.dao.entity;
+package az.crocusoft.database.releationships.dto.response;
 
+import az.crocusoft.database.releationships.dao.entity.Author;
+import az.crocusoft.database.releationships.dao.entity.Library;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Book {
+public class BookResponseDto {
 
-    @Id
-    @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "library_id")
     private Library library;
 
-    @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 }
