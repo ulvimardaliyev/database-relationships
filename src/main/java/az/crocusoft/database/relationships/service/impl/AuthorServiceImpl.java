@@ -5,6 +5,7 @@ import az.crocusoft.database.relationships.dao.repository.BookRepository;
 import az.crocusoft.database.relationships.dto.request.AuthorRequestDto;
 import az.crocusoft.database.relationships.dto.response.AuthorResponseDto;
 import az.crocusoft.database.relationships.mapper.AuthorMapper;
+import az.crocusoft.database.relationships.mapper.BookMapper;
 import az.crocusoft.database.relationships.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
     @Autowired
     private AuthorMapper authorMapper;
-
+    @Autowired
+    private BookMapper bookMapper;
     @Autowired
     private BookRepository bookRepository;
 
@@ -53,7 +55,7 @@ public class AuthorServiceImpl implements AuthorService {
         bookRepository.save(book);
         author.getBooks().add(book);
         authorRepository.save(author);
-
+        //bookMapper.allBooksToBookResponseDto(author.getBooks());
         return authorMapper.convertAuthorToAuthorResponseDto(author);
     }
 }

@@ -1,5 +1,6 @@
 package az.crocusoft.database.relationships.dto.response;
 
+import az.crocusoft.database.relationships.dao.entity.Book;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,5 @@ public class AuthorResponseDto {
 
     private String name;
 
-    private List<BookResponseDto> books;
+    private List<Book> books;
 }

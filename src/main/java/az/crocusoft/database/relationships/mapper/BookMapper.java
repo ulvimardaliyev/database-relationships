@@ -1,17 +1,15 @@
 package az.crocusoft.database.relationships.mapper;
 
-import az.crocusoft.database.relationships.dao.entity.Address;
-import az.crocusoft.database.relationships.dao.entity.Author;
 import az.crocusoft.database.relationships.dao.entity.Book;
-import az.crocusoft.database.relationships.dao.entity.Library;
 import az.crocusoft.database.relationships.dto.request.BookRequestDto;
 import az.crocusoft.database.relationships.dto.response.BookResponseDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring",
-        uses = {Author.class, Library.class, Address.class})
+        uses = {AuthorMapper.class, LibraryMapper.class, AddressMapper.class})
 public interface BookMapper {
 
     Book convertBookRequestDtoBook(BookRequestDto bookRequestDto);
@@ -20,4 +18,5 @@ public interface BookMapper {
 
     List<BookResponseDto> allBooksToBookResponseDto(List<Book> allBooks);
 
+    void updateBook(Book bookUpdate, @MappingTarget Book book);
 }

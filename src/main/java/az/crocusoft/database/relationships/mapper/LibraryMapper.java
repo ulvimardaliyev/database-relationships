@@ -1,8 +1,5 @@
 package az.crocusoft.database.relationships.mapper;
 
-import az.crocusoft.database.relationships.dao.entity.Address;
-import az.crocusoft.database.relationships.dao.entity.Author;
-import az.crocusoft.database.relationships.dao.entity.Book;
 import az.crocusoft.database.relationships.dao.entity.Library;
 import az.crocusoft.database.relationships.dto.request.LibraryRequestDto;
 import az.crocusoft.database.relationships.dto.response.LibraryResponseDto;
@@ -14,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper(componentModel = "spring",
-        uses = {Address.class, Author.class, Book.class})
+        uses = {AddressMapper.class, AuthorMapper.class, BookMapper.class})
 public interface LibraryMapper {
     LibraryMapper LIBRARY_MAPPER = Mappers.getMapper(LibraryMapper.class);
 
@@ -26,8 +23,8 @@ public interface LibraryMapper {
     })
     Library libraryRequestDtoToLibraryEntity(LibraryRequestDto libraryRequestDto);
 
-    @Mapping(source = "address", target = "libraryAddress")
-    @Mapping(source = "id", target = "library_id")
+    @Mapping(source = "library.address", target = "libraryAddress")
+    @Mapping(source = "library.id", target = "library_id")
     LibraryResponseDto libraryEntityToLibraryResponseDto(Library library);
 
 }
