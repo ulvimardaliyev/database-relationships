@@ -57,7 +57,7 @@ public class DatabaseRelationshipsApplication implements CommandLineRunner {
         addressRepository.save(address);
 
         bookRepository.save(book);
-
+        //small change
 
     }
 }
